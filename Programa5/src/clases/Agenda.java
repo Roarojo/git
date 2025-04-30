@@ -5,6 +5,9 @@
  */
 package clases;
 
+import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,6 +16,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Agenda extends javax.swing.JFrame {
    DefaultTableModel modelo = new DefaultTableModel();
+   private int renglon = -1;
+   
     /**
      * Creates new form Agenda
      */
@@ -71,6 +76,12 @@ public class Agenda extends javax.swing.JFrame {
         jPanel28 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jPanel30 = new javax.swing.JPanel();
+        jPanel31 = new javax.swing.JPanel();
+        btnAgregar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        jPanel32 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
 
@@ -89,6 +100,11 @@ public class Agenda extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        Tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                TablaMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(Tabla);
 
         jPanel1.add(jScrollPane1);
@@ -372,16 +388,60 @@ public class Agenda extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel3.setPreferredSize(new java.awt.Dimension(788, 80));
+        jPanel3.setLayout(new java.awt.GridLayout(3, 1));
+
+        javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
+        jPanel30.setLayout(jPanel30Layout);
+        jPanel30Layout.setHorizontalGroup(
+            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 788, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        jPanel30Layout.setVerticalGroup(
+            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 26, Short.MAX_VALUE)
         );
+
+        jPanel3.add(jPanel30);
+
+        jPanel31.setLayout(new java.awt.GridLayout(1, 3));
+
+        btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        jPanel31.add(btnAgregar);
+
+        btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel31.add(btnEliminar);
+
+        btnModificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnModificar.setText("Modificar");
+        jPanel31.add(btnModificar);
+
+        jPanel3.add(jPanel31);
+
+        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
+        jPanel32.setLayout(jPanel32Layout);
+        jPanel32Layout.setHorizontalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 788, Short.MAX_VALUE)
+        );
+        jPanel32Layout.setVerticalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 26, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel32);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
@@ -395,7 +455,7 @@ public class Agenda extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 98, Short.MAX_VALUE)
+            .addGap(0, 118, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.LINE_END);
@@ -410,13 +470,65 @@ public class Agenda extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 98, Short.MAX_VALUE)
+            .addGap(0, 118, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel5, java.awt.BorderLayout.LINE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        String id = txtID.getText();
+        String nombre = txtNombre.getText();
+        String correo = txtCorreo.getText();
+        String telefono = txtTelefono.getText();
+        if (id.length()==0 || nombre.length()==0 || correo.length()==0
+                || telefono.length()==0){
+           JOptionPane.showMessageDialog(null, "Faltan datos");
+        }else{
+           modelo.addRow(new Object[]{id,nombre,correo,telefono});
+           Tabla.setModel(modelo);
+           txtID.setText("");
+           txtNombre.setText("");
+           txtCorreo.setText("");
+           txtTelefono.setText("");
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        int index = -1;
+        index = Tabla.getSelectedRow();
+        if (index == -1 ){
+          JOptionPane.showMessageDialog(null,"Elije una fila");
+        }else{
+            modelo.removeRow(index);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void TablaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaMousePressed
+        // TODO add your handling code here:
+        renglon = Tabla.getSelectedRow();
+        if (renglon == -1){
+          JOptionPane.showMessageDialog(null,"Elije una fila");
+        }else{
+           Tabla.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+               @Override
+               public void valueChanged(ListSelectionEvent e) {
+                 if (!e.getValueIsAdjusting() && Tabla.getSelectedRow() != -1){
+                    int fila = Tabla.getSelectedRow();
+                   txtID.setText(Tabla.getValueAt(fila, 0).toString());
+                   txtNombre.setText(Tabla.getValueAt(fila, 1).toString());
+                   txtCorreo.setText(Tabla.getValueAt(fila, 2).toString());
+                   txtTelefono.setText(Tabla.getValueAt(fila, 3).toString());
+                }  
+               }
+           }  
+           );
+        }
+    }//GEN-LAST:event_TablaMousePressed
 
     /**
      * @param args the command line arguments
@@ -455,6 +567,9 @@ public class Agenda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -482,6 +597,9 @@ public class Agenda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
