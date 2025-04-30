@@ -5,6 +5,8 @@
  */
 package clases;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ROASUS
@@ -32,17 +34,17 @@ public class Principal extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
         jPanel10 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -56,29 +58,31 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel6.setLayout(new java.awt.GridLayout(1, 1));
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Usuario");
         jPanel6.add(jLabel1);
 
         jPanel1.add(jPanel6);
 
         jPanel7.setLayout(new java.awt.GridLayout(1, 1));
 
-        jTextField1.setText("jTextField1");
-        jPanel7.add(jTextField1);
+        txtUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel7.add(txtUsuario);
 
         jPanel1.add(jPanel7);
 
         jPanel8.setLayout(new java.awt.GridLayout(1, 1));
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Password");
         jPanel8.add(jLabel2);
 
         jPanel1.add(jPanel8);
 
         jPanel9.setLayout(new java.awt.GridLayout(1, 1));
 
-        jTextField2.setText("jTextField2");
-        jPanel9.add(jTextField2);
+        txtPassword.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel9.add(txtPassword);
 
         jPanel1.add(jPanel9);
 
@@ -88,7 +92,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 197, Short.MAX_VALUE)
+            .addGap(0, 187, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +109,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 197, Short.MAX_VALUE)
+            .addGap(0, 187, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,11 +120,23 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.add(jPanel11);
 
-        jButton2.setText("jButton2");
-        jPanel1.add(jButton2);
+        btnAceptar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAceptar);
 
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1);
+        btnCerrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCerrar);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -154,13 +170,13 @@ public class Principal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
-        jPanel4.setPreferredSize(new java.awt.Dimension(10, 200));
+        jPanel4.setPreferredSize(new java.awt.Dimension(20, 200));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,13 +185,13 @@ public class Principal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.LINE_END);
 
-        jPanel5.setPreferredSize(new java.awt.Dimension(10, 200));
+        jPanel5.setPreferredSize(new java.awt.Dimension(20, 200));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,6 +202,32 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        // TODO add your handling code here:
+        String usuario = txtUsuario.getText();
+        String pass = txtPassword.getText();
+        if (usuario.length() ==0 || pass.length()==0){
+           JOptionPane.showMessageDialog(null, "No se ingresado datos");
+        }else{
+           String u = "admin";
+           String p = "12345";
+           if (usuario.equals(u) && pass.equals(p)){
+               this.hide();
+               Agenda a = new Agenda();
+               a.setVisible(true);
+           }else{
+             JOptionPane.showMessageDialog(null, "usuario o password incorrectos");
+             txtUsuario.setText("");
+             txtPassword.setText("");
+           }
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,8 +265,8 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnCerrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -240,7 +282,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
